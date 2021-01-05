@@ -21,14 +21,15 @@ const userSchema = new Schema({
         required : true,
         unique : true
     },
-    // TODO : come back here
+    
     userInfo : {
         type : String,
         trim : true
     },
-    password : {
+    // TODO : come back here
+    encry_password : {
         type : String,
-        trim: true,
+        required : true
 
     },
     salt : String,
@@ -45,4 +46,20 @@ const userSchema = new Schema({
   });
 
 
+  userSchema.method = {
+      securePassword : function(plainpassword) {
+          if(!plainpassword) return ""
+          try{
+            return crypto.createHmac('sha256', this.salt)
+            .update(plainpassword)
+            .digest('hex')
+          } catch(err){
+              return ""
+          }
+      }
+  }
+
   module.exports  = mongoose.model("User",userSchema)
+
+  
+  
