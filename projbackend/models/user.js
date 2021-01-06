@@ -1,10 +1,9 @@
-import mongoose from 'mongoose';
-const { Schema } = mongoose;
+const  mongoose = require('mongoose');
 const  crypto = require('crypto')
 const uuidv1 = require('uuid/v1')
 
 
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
     name : {
         type: String,
         required : true,
@@ -45,6 +44,8 @@ const userSchema = new Schema({
         type : Array,
         default : []
     }
+  }, {
+      timestamps: true
   });
 
 
