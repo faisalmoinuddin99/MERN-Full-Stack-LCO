@@ -21,7 +21,7 @@ const orderSchema = new mongoose.Schema({
     amount: {
         type: Number
     },
-    address: String,
+    address: String, 
     updated: Date,
     user: {
         type: ObjectId,
