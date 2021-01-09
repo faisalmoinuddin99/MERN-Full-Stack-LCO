@@ -6,10 +6,26 @@ const app = express()
 
 const port = 8000
 
-
+const admin = (req,res)=>{
+    return res.send("this is admin dashboard")
+}
 app.get('/',(req,res) => {
     return res.send("Home Page")
 })
+
+
+const isAdmin = (req, res, next) => {
+    console.log("isAdmin is running")
+    next()
+}
+
+// custom MiddleWare
+const isLoggedIn = (req,res,next)=>{
+console.log("isLogged is running");
+next()
+}
+app.get("/admin", isLoggedIn ,isAdmin, admin)
+
 
 app.get('/login',(req,res) => {
     return res.send("Login Page")
