@@ -13,13 +13,13 @@ app.get('/',(req,res) => {
     return res.send("Home Page")
 })
 
-
+// sir Custom Middleware
 const isAdmin = (req, res, next) => {
     console.log("isAdmin is running")
     next()
 }
 
-// custom MiddleWare
+// Assignment custom MiddleWare
 const isLoggedIn = (req,res,next)=>{
 console.log("isLogged is running");
 next()
