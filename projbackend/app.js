@@ -8,7 +8,10 @@ const cookieParser = require('cookie-parser')
 const cors = require('cors')
 
 
+const authRoutes = require("./routes/auth")
 
+
+// DB Connection
 mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true, 
   useUnifiedTopology: true,
@@ -16,13 +19,20 @@ mongoose.connect(process.env.DATABASE, {
 }).then(()=>{
     console.log("DB CONNECTED");
 })
-
+// this is my middlewares
 app.use(bodyParser.json())
 app.use(cookieParser())
 app.use(cors())
 
+// My Routes 
+app.use("/api", authRoutes)
+
+
+// PORT
 const port = process.env.PORT || 8000
 
+
+// Starting Server
 app.listen(port,()=> {
     console.log(`app is running at ${port}`);
 })
