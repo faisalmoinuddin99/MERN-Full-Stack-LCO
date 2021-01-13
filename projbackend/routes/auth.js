@@ -2,12 +2,19 @@
 var express = require('express')
 var router = express.Router()
 
-router.get("/signout",(req,res)=>{
+const signOut = (req,res)=>{
     res.send("user signout")
-})
+}
+ 
+router.get("/signout", signOut)
 
-router.get("/signin",(req,res)=> {
-    res.send("user signin")
-})
+// sending json response message
+
+const signIn = (req, res)=>{
+    res.json({
+        message : "User SignIn"
+    })
+}
+router.get("/signin", signIn)
 
 module.exports = router
