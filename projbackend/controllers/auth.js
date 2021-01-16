@@ -7,7 +7,8 @@ exports.signUp = (req, res) => {
 
     if(!errors.isEmpty()){
         return res.status(422).json({
-            error : errors.array()[0].msg
+            error : errors.array()[0].msg,
+            // error : errors.array()[0].param
         })
     }
     // saving into the database
