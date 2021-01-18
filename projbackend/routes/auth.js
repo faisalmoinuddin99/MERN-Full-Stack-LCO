@@ -22,9 +22,6 @@ router.post("/signin",
 
 router.get("/signout", signOut)
 
-router.get("/testroute", isSignedIn, (req, res)=> {
-    res.send("A Protected route")
-})
 
 
 
